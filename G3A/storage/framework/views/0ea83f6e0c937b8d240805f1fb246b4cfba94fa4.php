@@ -1,0 +1,1 @@
+<h1>c'est un test</h1><?php /**PATH C:\Users\guill\OneDrive\Documents\Ynov\B2\Projet B2\Projet Dev Web\G3A\resources\views/index.blade.php ENDPATH**/ ?>
