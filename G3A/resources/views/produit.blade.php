@@ -14,7 +14,7 @@
   <div class="col-lg-9">
     @if (!empty($produit))
       <div class="card mt-4 card-flex">
-        <img src="<?php echo "images/".$produit->photo;?>" alt="test" class=" card-img-top img-fluid image_produit">
+        <img src="/images/<?php echo $produit->photo;?>" alt="" class=" card-img-top img-fluid image_produit">
         <div class="card-body">
           <h3 class="card-title"> {{ $produit->nom }} </h3>
           <p class="card-text espace-prod">{{ $produit->description }}</p>
@@ -32,16 +32,23 @@
         </div>
       </div>
     @endif
-      <form class="card mt-4 paiement_prod" action="/panier/ajouter" method="post">
+      @if(auth()->user())
+        @if($produit->quantite > 0)
           {{ csrf_field() }}
           {{method_field('post')}}
-          @if($produit->quantite > 0)
+          <form class="card mt-4 paiement_prod" action="/panier/ajouter" method="post">
             <input type="hidden", name="produit", value="{{ $produit->id }}">
             <button type="submit" class="btn btn-primary">Ajouter au panier</button>
-          @else
-            <button type="button" class="btn btn-primary" disabled="disabled">Produit indisponible</button>
-          @endif
-      </form>    
+          </form>    
+        @else
+          <button type="button" class="btn btn-primary" disabled="disabled">Produit indisponible</button>
+        @endif
+      @else
+        <a href="/connexion" class="mt-4 card">
+          <button type="submit" class="btn btn-primary">Se connecter pour ajouter au panier</button>
+        </form>
+        </a>
+      @endif
     <div class="card card-outline-secondary my-4">
       <div class="card-header">
         Avis acheteur

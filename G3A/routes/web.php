@@ -18,8 +18,9 @@ Route::group([
 ], function () {
     Route::post('/password_modification', 'App\Http\Controllers\UserAccountController@password_modification');
     Route::get('/password_modification', 'App\Http\Controllers\UserAccountController@form_password_modification');
-    Route::get('/profil', 'App\Http\Controllers\UserAccountController@profil');
-    Route::post('/profil/update', 'App\Http\Controllers\UserAccountController@modifier_profil');
+    Route::get('/profil', 'App\Http\Controllers\ProfilController@profil');
+    Route::post('/profil/update', 'App\Http\Controllers\ProfilController@modifier_profil');
+    Route::delete('/profil/sup/{Id}', 'App\Http\Controllers\ProfilController@sup_membre');
     Route::get('/deconnexion', 'App\Http\Controllers\UserAccountController@deconnexion');
 });
 

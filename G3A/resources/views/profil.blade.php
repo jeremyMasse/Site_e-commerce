@@ -35,11 +35,13 @@
                                             membre
                                         @endif</td>
                                         <td class="text-right">
-                                        <form action="{{ '/user/'.$u->id }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> 
-                                        </form>
+                                        @if(!$u->admin)
+                                            <form action="<?php echo '/profil/sup/'.$u->id ?>" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> 
+                                            </form>
+                                        @endif
                                         </td>
                                     </tr>
                                 @endforeach

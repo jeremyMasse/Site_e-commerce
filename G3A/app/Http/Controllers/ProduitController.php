@@ -12,8 +12,11 @@ class ProduitController extends Controller
     public function produit(int $id) 
     {
         $produit = produit::findorfail($id);
-        $avis = avi::where('id_produit', '=', $id );
-        return view('produit', compact('produit', 'avis'));
+        //$avis = avi::where('id_produit', '=', $id );
+        //return view('produit', compact('produit', 'avis'));
+        return view('produit', [
+            'produit' => $produit
+            ]);
     }
 }
 
